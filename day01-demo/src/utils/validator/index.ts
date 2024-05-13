@@ -1,0 +1,7 @@
+export * from './account.validator'
+export * from './password.validator'
+export * from './path.validator'
+export * from './string.validator'
+export * from './email.validator'
+export * from './student.validator'
+export * from './phone.validator'

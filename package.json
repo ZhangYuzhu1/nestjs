@@ -1,0 +1,17 @@
+{
+  "name": "NestJs-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@antfu/eslint-config": "^2.16.2",
+    "eslint": "^9.2.0",
+    "eslint-plugin-vue": "^9.25.0"
+  }
+}
