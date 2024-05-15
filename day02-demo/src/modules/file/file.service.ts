@@ -13,6 +13,7 @@ export class FileService {
   /**上传文件 */
   public async upload(name: string, file: string) {
     const directory = 'avatar'
+    const p = new Promise(() => { })
     return await this._ossSrv.client.put(`${directory}/${name}`, file)
   }
 

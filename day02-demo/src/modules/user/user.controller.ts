@@ -1,9 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { UserService } from './user.service'
 import { HasPermission } from 'src/guards/permission.guard'
 import { PermissionType } from 'src/types/enum/permission.enum'
 import { CatIdDto } from './dto/user-id-dto'
+import { CreateUserDto } from './dto/create-user.dto'
 
 @Controller('user')
 @ApiTags('User | 用户')
@@ -24,5 +25,12 @@ export class UserController {
   @Get(':id')
   public async findOne(@Param() param: CatIdDto) {
     return await this._userSrv.repo().findOne({ where: { id: param.id }, relations: { cats: true } })
+  }
+
+  @ApiOperation({ summary: '创建一个用户' })
+  @HasPermission([PermissionType.USER_CREATE])
+  @Post()
+  public async create(@Body() body: CreateUserDto) {
+    return body
   }
 }

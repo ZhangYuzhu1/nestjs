@@ -43,6 +43,11 @@ export class AuthService {
     }
   }
 
+  /**
+   * 登录
+   * @param body
+   * @returns
+   */
   public async login(body: Partial<User>) {
     const { account, password } = body
     const user = await this._userSrv.qb().where('account=:account', { account }).addSelect('u.password').getOne()

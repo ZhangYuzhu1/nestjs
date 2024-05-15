@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, IsString } from 'class-validator'
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator'
 
 export class CreateUserDto {
   @ApiProperty({
@@ -17,4 +17,18 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   password: string
+
+  @ApiProperty({
+    description: '用户邮箱',
+    example: '2020961521@qq.com',
+  })
+  @IsEmail()
+  @IsNotEmpty()
+  email: string
+
+  @ApiProperty({
+    description: '验证码',
+    example: '123456',
+  })
+  code: string
 }

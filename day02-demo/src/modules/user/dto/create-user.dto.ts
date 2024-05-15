@@ -17,4 +17,10 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   password: string
+
+  @ApiProperty({
+    description: '用户邮箱',
+    example: '2020961521@qq.com',
+  })
+  email: string
 }

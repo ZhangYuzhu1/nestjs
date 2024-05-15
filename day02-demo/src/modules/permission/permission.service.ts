@@ -2,7 +2,7 @@ import type { OnModuleInit } from '@nestjs/common'
 import { Inject, Injectable, forwardRef } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Permission } from 'src/entities/permission'
-import { permissionDescriptions } from 'src/types/enum/permission.enum'
+import { PermissionType, permissionDescriptions } from 'src/types/enum/permission.enum'
 import { In, Not, Repository } from 'typeorm'
 import { RoleService } from '../role/role.service'
 
@@ -21,7 +21,7 @@ export class PermissionService implements OnModuleInit {
 
   /** 初始化权限 */
   private async initPermissions() {
-    await Promise.all(Object.entries(permissionDescriptions).map(async ([name, description]) => {
+    await Promise.all((Object.entries(permissionDescriptions) as Array<[PermissionType, string]>).map(async ([name, description]) => {
       try {
         await this._permissionRepo.save({ name, description })
       }
@@ -30,5 +30,9 @@ export class PermissionService implements OnModuleInit {
     }))
 
     await this._roleSrv.initDefaultRoles()
+  }
+
+  public repo() {
+    return this._permissionRepo
   }
 }

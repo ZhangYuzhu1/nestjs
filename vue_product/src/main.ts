@@ -1,12 +1,13 @@
 import './assets/main.css'
 import './styles/main.css'
-
 import { createApp } from 'vue'
+import { setupLayouts } from 'virtual:generated-layouts'
+import generatedRoutes from '~pages'
+
 import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
 import quasarLang from 'quasar/lang/zh-CN'
 import { Dialog, Loading, Notify, Quasar } from 'quasar'
 import quasarIconSet from 'quasar/icon-set/fontawesome-v6'
@@ -16,6 +17,7 @@ import '@quasar/extras/fontawesome-v6/fontawesome-v6.css'
 
 // Import Quasar css
 import 'quasar/src/css/index.sass'
+
 const app = createApp(App)
 
 Notify.registerType('success', {

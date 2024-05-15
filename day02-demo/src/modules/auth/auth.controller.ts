@@ -2,6 +2,7 @@ import { Body, Controller, Post, Put } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { AuthService } from './auth.service'
 import { CreateUserDto } from './dto/create-user.dto'
+import { buffer } from 'stream/consumers'
 
 @Controller('auth')
 @ApiTags('Auth | 授权')
@@ -19,4 +20,5 @@ export class AuthController {
   public async login(@Body() body: CreateUserDto) {
     return this._authSrv.login(body)
   }
+
 }

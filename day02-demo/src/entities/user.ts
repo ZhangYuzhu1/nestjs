@@ -13,6 +13,9 @@ export class User {
   @Column({ select: false })
   password: string
 
+  @Column()
+  email: string
+
   @ManyToOne(() => Role, role => role.users)
   @JoinColumn()
   role: Role
