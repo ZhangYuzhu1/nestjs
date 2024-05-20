@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { QFile, Notify } from 'quasar'
 import Draggable from 'vuedraggable'
 import { upload } from '../../api/upload'
+import { fish } from '../../assets/fish'
+import Waves from '../../components/Waves.vue'
 
 const value = ref<File>()
 const img = ref('')
@@ -51,10 +53,16 @@ watch(
     }
   }
 )
+
+onMounted(() => {
+  fish()
+})
 </script>
 
 <template>
-  <div>
+  <Waves />
+
+  <div id="jsi-flying-fish-container" class="fish" style="width: 100%;height: 100%;">
     <!-- 上传图片或文件到oss -->
     <div>
       <QFile style="width: 170px;" v-model="value" />

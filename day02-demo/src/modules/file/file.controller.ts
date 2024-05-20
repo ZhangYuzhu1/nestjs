@@ -4,7 +4,7 @@ import { ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { OssService } from './oss/oss.service';
 
 @Controller('file')
-@ApiTags('文件上传')
+@ApiTags('OSS | 文件服务')
 export class FileController {
   constructor(
     private readonly _fileSrv: FileService

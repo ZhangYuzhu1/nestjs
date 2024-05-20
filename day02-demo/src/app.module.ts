@@ -1,3 +1,4 @@
+import { WebSocketGateway } from '@nestjs/websockets';
 import type { MiddlewareConsumer, NestModule } from '@nestjs/common'
 import { Module, RequestMethod } from '@nestjs/common'
 import type { TypeOrmModuleOptions } from '@nestjs/typeorm'
@@ -16,6 +17,8 @@ import { AuthMiddleware } from './middleware/auth.middleware'
 import { PermissionModule } from './modules/permission/permission.module'
 import { RoleModule } from './modules/role/role.module'
 import { FileModule } from './modules/file/file.module'
+import { MinioModule } from './modules/minio/minio.module'
+import { WebsocketGateway } from './modules/websocket/websocket.gateway';
 
 @Module({
   imports: [
@@ -27,6 +30,8 @@ import { FileModule } from './modules/file/file.module'
     EmailModule,
     ScheduleModule,
     FileModule,
+    MinioModule,
+    WebsocketGateway,
 
     ScheduleModule.forRoot(),
     // 加载所有配置
